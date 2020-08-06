@@ -1,0 +1,10 @@
+<h1>Basketball Teams</h1>
+
+<ul>
+<% @teams.each do |t| %>
+    <li><%= link_to t.team_name, basketball_team_path(t) %></li>
+    <% end %>
+ </ul>
+
+ <h5><%= link_to "Add Team", new_basketball_team_path %></h5>
+    

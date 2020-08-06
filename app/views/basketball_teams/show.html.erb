@@ -1,0 +1,15 @@
+<h1><%= @team.team_name %> </h1>
+
+<ul>
+<li>City: <%= @team.city_name %> </li>
+<li>Team Colors: <%= @team.team_colors %> </li>
+<li>Championships: <%= @team.no_of_championships %> </li>
+
+</ul>
+
+
+<h5><%= link_to "Main Page", basketball_teams_path%></h5>
+<h5><%= link_to "Edit Team", edit_basketball_team_path%></h5>
+<h5><%= link_to "Delete Team", basketball_team_path, method: :delete%></h5>
+
+

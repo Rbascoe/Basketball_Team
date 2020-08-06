@@ -1,0 +1,14 @@
+<h3> Add New Team </h3>
+
+<%= form_for @team do |f|%>
+    <%= f.label :city_name, "City Name" %>
+    <%= f.text_field :city_name %><br>
+    <%= f.label :team_name, "Team Name" %>
+    <%= f.text_field :team_name %><br>
+    <%= f.label :team_colors, "Team Colors" %>
+    <%= f.text_field :team_colors %><br>
+    <%= f.label :no_of_championships, "Championships" %>
+    <%= f.number_field :no_of_championships, min: 0,  step: 1 %><br>
+    <%= f.submit "Submit Team" %>
+    <% end %>
+    
