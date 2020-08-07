@@ -1,15 +1,23 @@
 <h1><%= @team.team_name %> </h1>
 
 <ul>
-<li>City: <%= @team.city_name %> </li>
-<li>Team Colors: <%= @team.team_colors %> </li>
-<li>Championships: <%= @team.no_of_championships %> </li>
+    <li>City: <%= @team.city_name %> </li>
+    <li>Team Colors: <%= @team.team_colors %> </li>
+    <li>Championships: <%= @team.no_of_championships %> </li>
+    <li>Players:
+        <ul>
+            <% @team.players.each do |player| %>
+                <li><%= link_to player.name, player_path(player) %></li>
+                <% end %>
+        </ul>
+    </li> 
 
 </ul>
 
 
 <h5><%= link_to "Main Page", basketball_teams_path%></h5>
 <h5><%= link_to "Edit Team", edit_basketball_team_path%></h5>
+<h5><%= link_to "Add Player", new_player_path %></h5>
 <h5><%= link_to "Delete Team", basketball_team_path, method: :delete, data: {confirm: "Are you sure you want to delete this?"}%></h5>
 
 

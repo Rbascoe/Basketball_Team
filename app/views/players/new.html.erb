@@ -1,0 +1,11 @@
+<h1>Add Player</h1>
+
+<%= form_for @player do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :number %>
+    <%= f.number_field :number%><br>
+    <%= f.label :basketball_team_id, "Basketball Team:"%>
+    <%= f.select :basketball_team_id, options_for_select(@teams.collect { | team | [team.team_name, team.id] })%><br>
+    <%= f.submit "Add Player" %>
+    <% end %>
