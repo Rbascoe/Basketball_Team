@@ -1,4 +1,4 @@
-<h1>Edit Player</h1>
+<h1><%= "Edit" + " #{@player.name}"%></h1>
 
 <%= form_for @player do |f| %>
     <%= f.label :name %>

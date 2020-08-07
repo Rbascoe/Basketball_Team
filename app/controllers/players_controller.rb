@@ -1,16 +1,15 @@
 class PlayersController < ApplicationController
-    
+    before_action :find_player, only: [:show, :edit, :update]
+    before_action :find_teams, only: [:new, :edit]
     def index
         @players = Player.all
     end
 
     def show
-        @player = Player.find(params[:id])
     end
 
     def new
         @player = Player.new
-        @teams = BasketballTeam.all
     end
 
     def create
@@ -19,12 +18,9 @@ class PlayersController < ApplicationController
     end
     
     def edit
-        @player = Player.find(params[:id])
-        @teams = BasketballTeam.all
     end
 
     def update
-        @player = Player.find(params[:id])
         @player.update(player_params)
         redirect_to player_path(@player)
     end
@@ -35,6 +31,14 @@ class PlayersController < ApplicationController
     end
 
     private
+
+    def find_teams
+        @teams = BasketballTeam.all
+    end
+
+    def find_player
+        @player = Player.find(params[:id])
+    end
 
     def player_params
         params.require(:player).permit(:name, :number, :basketball_team_id)

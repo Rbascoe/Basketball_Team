@@ -1,11 +1,10 @@
 class BasketballTeamsController < ApplicationController
-
+    before_action :find_team, only: [:show, :edit, :update, :destroy]
     def index
         @teams = BasketballTeam.all 
     end
 
-    def show
-        @team = BasketballTeam.find(params[:id])   
+    def show  
     end
 
     def new
@@ -18,22 +17,23 @@ class BasketballTeamsController < ApplicationController
     end
 
     def edit
-        @team = BasketballTeam.find(params[:id])
     end
 
     def update
-        @team = BasketballTeam.find(params[:id])
         @team.update(team_params)
         redirect_to basketball_team_path(@team)
     end 
 
     def destroy
-        @team = BasketballTeam.find(params[:id])
         @team.destroy
         redirect_to basketball_teams_path
     end
 
     private #make sure private is downcased
+
+    def find_team
+        @team = BasketballTeam.find(params[:id])
+    end
 
     def team_params
         params.require(:basketball_team).permit(:city_name, :team_name, :team_colors, :no_of_championships)
